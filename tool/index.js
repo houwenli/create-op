@@ -60,8 +60,26 @@ const getData = (param) => {
   });
 }
 
+/**
+ * 约定初始化文件
+ * 从模板文件拷贝一份
+ */
+const creatOpInit = () => {
+  // 获取当前命令所在路径
+  let cfgPath = path.join(process.cwd(), 'cfg.json')
+
+  // 获取当前文件所在路径
+  let templatePath = path.join(__dirname, 'cfg.json')
+
+  fs.copyFile(templatePath, cfgPath, (err) => {
+    if (err) throw err;
+    console.log('source.txt was copied to destination.txt');
+  });
+}
+
 
 module.exports = {
-  creatOp
+  creatOp,
+  creatOpInit
 }
 
